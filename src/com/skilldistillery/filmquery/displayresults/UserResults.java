@@ -1,7 +1,6 @@
 package com.skilldistillery.filmquery.displayresults;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import com.skilldistillery.filmquery.entities.Film;
 
@@ -34,7 +33,7 @@ public StringBuilder filmDetailsDisplay(ArrayList<Film> filmList) {
 	StringBuilder userFilmDetails = new StringBuilder();
 	ArrayList<Film> usersMatches = filmList;
 	int movieCounter = 1;
-	
+	System.out.println(filmList);
 	for (Film movie : usersMatches) {
 		userFilmDetails.append(movieCounter + ". ");
 		 userFilmDetails.append(movie.getTitle());

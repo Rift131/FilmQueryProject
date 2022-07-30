@@ -196,18 +196,20 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		String sqltext;
 		sqltext = "SELECT *\n"
 				+ "FROM film flm\n"
-				+ "WHERE flm.title LIKE '%?%' OR flm.description LIKE '%?%';";
+				+ "WHERE flm.title LIKE ? OR flm.description LIKE ?;";
 		// Prepared Statement
 		PreparedStatement stmt = conn.prepareStatement(sqltext);
-		stmt.setString(2, "%userInput%");
-		stmt.setString(3, "%userInput%");
+		String keyword = "%" + userInput + "%";
+		stmt.setString(1, keyword); // Problem point
+		stmt.setString(2, keyword);
 
 		ResultSet foundFilm = stmt.executeQuery();
-
+		
 		while (foundFilm.next()) {
 
 			film = new Film();
 			film.setId(foundFilm.getInt("id"));
+			System.out.print("Populating a film");
 			film.setTitle(foundFilm.getString("title"));
 			film.setDescription(foundFilm.getString("description"));
 			film.setYear(foundFilm.getInt("release_year"));

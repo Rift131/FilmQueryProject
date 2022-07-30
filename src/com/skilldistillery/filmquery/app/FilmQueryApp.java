@@ -61,6 +61,7 @@ public class FilmQueryApp {
 				lookUpFilmByKeywordMenu();
 				break;
 			case 3:
+				System.out.println("Exiting Program. Have a nice day!");
 				break;
 			default:
 				System.out.println("Unrecognized Entry. Enter 1, 2 or 3 as presented by the menu.");
@@ -112,8 +113,8 @@ public class FilmQueryApp {
 
 		try {
 			String menuChoice = input.nextLine();
-
 			ArrayList<Film> userResult = db.findFilmByKeyword(menuChoice);
+
 			UserResults uR = new UserResults();
 			System.out.println(uR.filmDetailsDisplay(userResult));
 			launch();
