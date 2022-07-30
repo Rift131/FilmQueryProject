@@ -18,7 +18,7 @@ public class Film {
 	private String specialFeatures;
 	private ArrayList<Actor> filmCast;
 	private FilmLanguage language;
-	
+
 	public Film() {
 		super();
 	}
@@ -45,12 +45,19 @@ public class Film {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Film [id=").append(id).append(", title=").append(title).append(", description=")
-				.append(description).append(", year=").append(year).append(", languageId=").append(languageId)
-				.append(", rentalDuration=").append(rentalDuration).append(", rentalRate=").append(rentalRate)
-				.append(", length=").append(length).append(", replacementCost=").append(replacementCost)
-				.append(", rating=").append(rating).append(", specialFeatures=").append(specialFeatures)
-				.append(", filmCast=").append(filmCast).append(", language=").append(language).append("]");
+		builder.append("Film: ").append(id).append(", Title: ").append(title).append(", Description: ")
+				.append(description).append(", Year: ").append(year).append(", LanguageId: ").append(languageId)
+				.append(", Rental Duration: ").append(rentalDuration).append(", Rental Rate: ").append(rentalRate)
+				.append(", Length: ").append(length).append(", Replacement Cost: ").append(replacementCost)
+				.append(", Rating: ").append(rating).append(", Special Features: ").append(specialFeatures)
+				.append(", Film Cast: ").append(filmCast).append(", Language: ").append(language);
+		return builder.toString();
+	}
+	
+	public String toCustomerString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Title: ").append(title).append(", Year: ").append(year).append(", Rating: ").append(rating).append(", Language: ").append(language).append("\n").append("Description: ")
+				.append(description).append("\n").append("Film Cast: ").append(filmCast);
 		return builder.toString();
 	}
 
@@ -185,6 +192,5 @@ public class Film {
 	public void setLanguage(FilmLanguage filmLanguage) {
 		this.language = filmLanguage;
 	}
-	
-	
+
 }

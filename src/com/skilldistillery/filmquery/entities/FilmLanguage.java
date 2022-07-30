@@ -20,8 +20,7 @@ public class FilmLanguage {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("FilmLanguage [languageId=").append(languageId).append(", languageName=").append(languageName)
-				.append("]");
+		builder.append(languageName);
 		return builder.toString();
 	}
 

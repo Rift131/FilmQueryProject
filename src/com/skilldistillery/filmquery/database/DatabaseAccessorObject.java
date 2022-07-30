@@ -107,7 +107,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	@Override
 	public List<Actor> findActorsByFilmId(int filmId) throws SQLException {
 		// TODO Auto-generated method stub
-
+		
 		ArrayList<Actor> movieActors = new ArrayList<>();
 		Actor actor = new Actor();
 
@@ -209,7 +209,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 			film = new Film();
 			film.setId(foundFilm.getInt("id"));
-			System.out.print("Populating a film");
 			film.setTitle(foundFilm.getString("title"));
 			film.setDescription(foundFilm.getString("description"));
 			film.setYear(foundFilm.getInt("release_year"));

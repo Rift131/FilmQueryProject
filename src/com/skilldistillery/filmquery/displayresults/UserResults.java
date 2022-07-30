@@ -13,17 +13,7 @@ public class UserResults {
 	public StringBuilder filmDetailsDisplay(Film film) {
 		StringBuilder userFilmDetails = new StringBuilder();
 		 
-			 userFilmDetails.append(film.getTitle());
-			 userFilmDetails.append(", ");
-			 userFilmDetails.append(film.getYear());
-			 userFilmDetails.append(", ");
-			 userFilmDetails.append(film.getRating());
-			 userFilmDetails.append(", ");
-			 userFilmDetails.append(film.getLanguage());
-			 userFilmDetails.append(", ");
-			 userFilmDetails.append(film.getDescription());
-			 userFilmDetails.append(", ");
-			 userFilmDetails.append(film.getFilmCast());
+			 userFilmDetails.append(film.toCustomerString().replace("[", "").replace("]", ""));
 		 
 		return userFilmDetails;
 	}
@@ -33,23 +23,11 @@ public StringBuilder filmDetailsDisplay(ArrayList<Film> filmList) {
 	StringBuilder userFilmDetails = new StringBuilder();
 	ArrayList<Film> usersMatches = filmList;
 	int movieCounter = 1;
-	System.out.println(filmList);
+	//System.out.println(filmList);
 	for (Film movie : usersMatches) {
-		userFilmDetails.append(movieCounter + ". ");
-		 userFilmDetails.append(movie.getTitle());
-		 userFilmDetails.append(", ");
-		 userFilmDetails.append(movie.getYear());
-		 userFilmDetails.append(", ");
-		 userFilmDetails.append(movie.getRating());
-		 userFilmDetails.append(", ");
-		 userFilmDetails.append(movie.getLanguage());
-		 userFilmDetails.append(",\n ");
-		 userFilmDetails.append(movie.getDescription());
-		 userFilmDetails.append(",\n ");
-		 userFilmDetails.append(movie.getFilmCast());
-		 userFilmDetails.append("/n");
-		 userFilmDetails.append("/n");
-		 movieCounter++;
+		String eachMovie = movieCounter + ". " + movie.toCustomerString().replace("[", "").replace("]", "") + "\n";
+		userFilmDetails.append(eachMovie);
+		movieCounter++;
 	}
 	return userFilmDetails;
 }

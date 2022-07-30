@@ -2,6 +2,7 @@ package com.skilldistillery.filmquery.app;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.skilldistillery.filmquery.database.DatabaseAccessor;
@@ -30,6 +31,7 @@ public class FilmQueryApp {
 		startUserInterface();
 
 		input.close();
+		System.out.println("...Program successfully closed.");
 		System.exit(0);
 	}
 
@@ -77,6 +79,7 @@ public class FilmQueryApp {
 	}
 
 	public void lookUpFilmByIdMenu() throws SQLException {
+		System.out.println("\n");
 		System.out.println("*******************************************");
 		System.out.println("**************** Film Query ***************");
 		System.out.println("**                                       **");
@@ -93,9 +96,13 @@ public class FilmQueryApp {
 			Film userResult = db.findFilmById(menuChoice);
 			UserResults uR = new UserResults();
 			System.out.println(uR.filmDetailsDisplay(userResult));
+			
 			launch();
 
-		} catch (IllegalArgumentException e) {
+		} catch (NullPointerException e) {
+			System.out.println("Sorry, unrecognized Entry");
+			launch();
+		} catch (InputMismatchException e) {
 			System.out.println("Sorry, unrecognized Entry");
 			launch();
 		}
@@ -120,6 +127,12 @@ public class FilmQueryApp {
 			launch();
 
 		} catch (IllegalArgumentException e) {
+			System.out.println("Sorry, unrecognized Entry");
+			launch();
+		} catch (NullPointerException e) {
+			System.out.println("Sorry, no matches found.");
+			launch();
+		} catch (Exception e) {
 			System.out.println("Sorry, unrecognized Entry");
 			launch();
 		}
