@@ -49,10 +49,15 @@ public class FilmQueryApp {
 		System.out.println("** 2. Look Up A Film By A Search Keyword **");
 		System.out.println("** 3. Exit The Application               **");
 		System.out.println("**                                       **");
+		System.out.println("**          Enter the number             **");
+		System.out.println("**         matching your choice.         **");
+		System.out.println("**                                       **");
 		System.out.println("*******************************************");
 
+		int menuChoice;
+		
 		try {
-			int menuChoice = input.nextInt();
+			menuChoice = input.nextInt();
 			input.nextLine();
 
 			switch (menuChoice) {
@@ -67,14 +72,20 @@ public class FilmQueryApp {
 				break;
 			default:
 				System.out.println("Unrecognized Entry. Enter 1, 2 or 3 as presented by the menu.");
-				launch();
+				startUserInterface();
 
 			}
 
 		} catch (IllegalArgumentException e) {
-			System.out.println("Unrecognized Entry. Enter 1, 2 or 3 as presented by the menu.");
+			System.out.println("EXCEPTION: Unrecognized Entry. Enter 1, 2 or 3 as presented by the menu.");
+			input.next();
 			launch();
-		}
+		} catch (InputMismatchException e) {
+			
+			System.out.println("EXCEPTION: Unrecognized Entry. Enter 1, 2 or 3 as presented by the menu.");
+			input.next();
+			launch();
+		} 
 
 	}
 
@@ -100,10 +111,11 @@ public class FilmQueryApp {
 			launch();
 
 		} catch (NullPointerException e) {
-			System.out.println("Sorry, unrecognized Entry");
+			System.out.println("Sorry, no film was found matching that ID number.");
 			launch();
 		} catch (InputMismatchException e) {
-			System.out.println("Sorry, unrecognized Entry");
+			System.out.println("Sorry, ERROR due to not entering a number.");
+			input.next();
 			launch();
 		}
 	}
@@ -123,6 +135,7 @@ public class FilmQueryApp {
 			ArrayList<Film> userResult = db.findFilmByKeyword(menuChoice);
 
 			UserResults uR = new UserResults();
+			System.out.println("\nMovies matching your entry include...\n");
 			System.out.println(uR.filmDetailsDisplay(userResult));
 			launch();
 

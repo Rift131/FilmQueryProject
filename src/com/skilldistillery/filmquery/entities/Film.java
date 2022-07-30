@@ -57,7 +57,7 @@ public class Film {
 	public String toCustomerString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Title: ").append(title).append(", Year: ").append(year).append(", Rating: ").append(rating).append(", Language: ").append(language).append("\n").append("Description: ")
-				.append(description).append("\n").append("Film Cast: ").append(filmCast);
+				.append(description).append(".\n").append("Film Cast: ").append(filmCast).append(".\n");
 		return builder.toString();
 	}
 
