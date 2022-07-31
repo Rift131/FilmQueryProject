@@ -51,13 +51,13 @@ public class Film {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Film ID: ").append(id).append(", Title: ").append(title).append("\n").append(", Description: ")
-				.append(description).append("\n").append(", Year: ").append(year).append(", Language Id Number: ").append(languageId).append(", Language: ").append(language).append("\n")
-				.append(", Rental Duration: ").append(rentalDuration).append(", Rental Rate: ").append(rentalRate)
+		builder.append("Film ID: ").append(id).append(", Title: ").append(title).append("\n").append("Description: ")
+				.append(description).append("\n").append("Year: ").append(year).append(", Language Id Number: ").append(languageId).append(", Language: ").append(language).append("\n")
+				.append("Rental Duration: ").append(rentalDuration).append(", Rental Rate: ").append(rentalRate)
 				.append(", Length: ").append(length).append(", Replacement Cost: ").append(replacementCost).append("\n")
-				.append(", Rating: ").append(rating).append(", Special Features: ").append(specialFeatures).append("\n")
-				.append(", Film Cast: ").append(filmCast).append(", Film Category: ")
-				.append(filmCategory).append(", Film Inventory Status: ").append(filmInventoryStatus);
+				.append("Rating: ").append(rating).append(", Special Features: ").append(specialFeatures).append("\n")
+				.append("Film Cast: ").append(filmCast).append("Film Category: ")
+				.append(filmCategory).append(", Film Inventory Status: ").append(filmInventoryStatus).append(".\n");
 		return builder.toString();
 	}
 

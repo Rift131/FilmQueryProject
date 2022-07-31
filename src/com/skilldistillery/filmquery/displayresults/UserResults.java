@@ -31,4 +31,17 @@ public StringBuilder filmDetailsDisplay(ArrayList<Film> filmList) {
 	}
 	return userFilmDetails;
 }
+
+public StringBuilder seeFilmDetails(ArrayList<Film> filmById) {
+	StringBuilder userFilmDetails = new StringBuilder();
+	ArrayList<Film> usersMatches = filmById;
+	int movieCounter = 1;
+	//System.out.println(filmList);
+	for (Film movie : usersMatches) {
+		String eachMovie = movieCounter + ". " + movie.toString().replace("[", "").replace("]", "") + "\n";
+		userFilmDetails.append(eachMovie);
+		movieCounter++;
+	}
+	return userFilmDetails;
+}
 }

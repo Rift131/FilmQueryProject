@@ -43,7 +43,7 @@ public class FilmQueryApp {
 		// this)
 
 		System.out.println("*******************************************");
-		System.out.println("**************** Film Query ***************");
+		System.out.println("********** Film Query Main Menu ***********");
 		System.out.println("**                                       **");
 		System.out.println("** 1. Look Up A Film By Its ID           **");
 		System.out.println("** 2. Look Up A Film By A Search Keyword **");
@@ -108,7 +108,7 @@ public class FilmQueryApp {
 			UserResults uR = new UserResults();
 			System.out.println(uR.filmDetailsDisplay(userResult));
 
-			launch();
+			seeFilmDetailsMenu(userResult);
 
 		} catch (NullPointerException e) {
 			System.out.println("Sorry, no film was found matching that ID number.");
@@ -119,7 +119,50 @@ public class FilmQueryApp {
 			launch();
 		}
 	}
+	
+	private void seeFilmDetailsMenu(ArrayList<Film> filmById) throws SQLException {
 
+		System.out.println("*******************************************");
+		System.out.println("**************** Film Query ***************");
+		System.out.println("**                                       **");
+		System.out.println("** 1. Return to main menu                **");
+		System.out.println("** 2. See film details                   **");
+		System.out.println("**                                       **");
+		System.out.println("*******************************************");
+
+		int menuChoice;
+
+		try {
+			menuChoice = input.nextInt();
+			input.nextLine();
+
+			switch (menuChoice) {
+			case 1:
+				launch();
+				break;
+			case 2:
+				UserResults uR = new UserResults();
+				System.out.println(uR.seeFilmDetails(filmById));
+				launch();
+				break;
+			default:
+				System.out.println("Unrecognized Entry. Enter 1 or 2 as presented by the menu.");
+				startUserInterface();
+
+			}
+
+		} catch (IllegalArgumentException e) {
+			System.out.println("EXCEPTION: Unrecognized Entry. Enter 1, 2 or 3 as presented by the menu.");
+			input.next();
+			launch();
+		} catch (InputMismatchException e) {
+
+			System.out.println("EXCEPTION: Unrecognized Entry. Enter 1, 2 or 3 as presented by the menu.");
+			input.next();
+			launch();
+		}
+
+	}
 	public void lookUpFilmByKeywordMenu() throws SQLException {
 		System.out.println("*******************************************");
 		System.out.println("**************** Film Query ***************");

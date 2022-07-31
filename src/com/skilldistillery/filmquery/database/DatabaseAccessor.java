@@ -25,6 +25,7 @@ public interface DatabaseAccessor {
 	public Category findFilmCategoryById(int filmID) throws SQLException;
 
 	public FilmInventoryStatus findFilmInventoryStatusById(int filmID) throws SQLException;
+
 	
 
 }
