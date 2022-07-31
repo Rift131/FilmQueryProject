@@ -41,7 +41,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		// Query Code
 		String sqltext;
 		sqltext = "SELECT * FROM film flm JOIN inventory_item ii ON flm.id = ii.film_id WHERE ii.film_id = ?;";
-		
+
 		// Prepared Statement
 		PreparedStatement stmt = conn.prepareStatement(sqltext);
 		stmt.setInt(1, filmId);
@@ -114,7 +114,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	@Override
 	public List<Actor> findActorsByFilmId(int filmId) throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 		ArrayList<Actor> movieActors = new ArrayList<>();
 		Actor actor = new Actor();
 
@@ -123,8 +123,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		Connection conn = DriverManager.getConnection(url, user, pass);
 
 		String sqltext;
-		sqltext = "SELECT *\n"
-				+ "FROM actor act JOIN film_actor fa ON act.id = fa.actor_id\n"
+		sqltext = "SELECT *\n" + "FROM actor act JOIN film_actor fa ON act.id = fa.actor_id\n"
 				+ "               JOIN film flm ON fa.film_id = flm.id\n" + "WHERE flm.id = ?\n"
 				+ "ORDER BY act.last_name;";
 
@@ -154,50 +153,41 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return null;
 	}
 
-	
-	
-	
 	// NEW DATABASE METHODS THAT RETURN SPECIFIC OBJECTS
-	
-	
-	
-	
+
 	@Override
 	public FilmLanguage findLanguageById(int filmId) throws SQLException {
 		FilmLanguage filmLang = null;
-		
+
 		String user = "student";
 		String pass = "student";
 		Connection conn = DriverManager.getConnection(url, user, pass);
-		
+
 		String sqltext;
 		sqltext = "SELECT *\n" + "FROM language lang JOIN film flm ON lang.id = flm.language_id\n"
 				+ "WHERE flm.id = ?;";
-		
+
 		PreparedStatement stmt = conn.prepareStatement(sqltext);
 		stmt.setInt(1, filmId);
-		
+
 		ResultSet rs = stmt.executeQuery();
-		
+
 		if (rs.next()) {
-			
+
 			filmLang = new FilmLanguage();
-			
+
 			filmLang.setLanguageId(rs.getInt("id"));
 			filmLang.setLanguageName(rs.getString("name"));
-			
+
 		}
-		
+
 		rs.close();
 		stmt.close();
 		conn.close();
-		
+
 		return filmLang;
 	}
-	
-	
-	
-	
+
 	@Override
 	public ArrayList<Film> findFilmByKeyword(String userInput) throws SQLException {
 		// TODO: connection, Prepared Statement, execute Query, Result set, create Film
@@ -210,8 +200,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 		// Query Code
 		String sqltext;
-		sqltext = "SELECT *\n"
-				+ "FROM film flm JOIN inventory_item ii ON flm.id = ii.film_id \n"
+		sqltext = "SELECT *\n" + "FROM film flm JOIN inventory_item ii ON flm.id = ii.film_id \n"
 				+ "WHERE flm.title LIKE ? OR flm.description LIKE ?;";
 		// Prepared Statement
 		PreparedStatement stmt = conn.prepareStatement(sqltext);
@@ -220,7 +209,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		stmt.setString(2, keyword);
 
 		ResultSet foundFilm = stmt.executeQuery();
-		
+
 		while (foundFilm.next()) {
 
 			film = new Film();
@@ -251,7 +240,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public Category findFilmCategoryById(int filmID) throws SQLException {
 		Category flmCat = null;
@@ -261,10 +250,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		Connection conn = DriverManager.getConnection(url, user, pass);
 
 		String sqltext;
-		sqltext = "SELECT cat.name\n"
-				+ "FROM film flm JOIN film_category fc ON flm.id = fc.film_id\n"
-				+ "              JOIN category cat ON fc.category_id = cat.id\n"
-				+ "WHERE flm.id = ?;";
+		sqltext = "SELECT cat.name\n" + "FROM film flm JOIN film_category fc ON flm.id = fc.film_id\n"
+				+ "              JOIN category cat ON fc.category_id = cat.id\n" + "WHERE flm.id = ?;";
 
 		PreparedStatement stmt = conn.prepareStatement(sqltext);
 		stmt.setInt(1, filmID);
@@ -316,5 +303,4 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 		return status;
 	}
-
 }
