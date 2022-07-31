@@ -55,7 +55,7 @@ public class FilmQueryApp {
 		System.out.println("*******************************************");
 
 		int menuChoice;
-		
+
 		try {
 			menuChoice = input.nextInt();
 			input.nextLine();
@@ -81,11 +81,11 @@ public class FilmQueryApp {
 			input.next();
 			launch();
 		} catch (InputMismatchException e) {
-			
+
 			System.out.println("EXCEPTION: Unrecognized Entry. Enter 1, 2 or 3 as presented by the menu.");
 			input.next();
 			launch();
-		} 
+		}
 
 	}
 
@@ -107,7 +107,7 @@ public class FilmQueryApp {
 			Film userResult = db.findFilmById(menuChoice);
 			UserResults uR = new UserResults();
 			System.out.println(uR.filmDetailsDisplay(userResult));
-			
+
 			launch();
 
 		} catch (NullPointerException e) {
@@ -127,7 +127,6 @@ public class FilmQueryApp {
 		System.out.println("**            Please enter what          **");
 		System.out.println("**            you're looking for.        **");
 		System.out.println("**                                       **");
-		System.out.println("**                                       **");
 		System.out.println("*******************************************");
 
 		try {
@@ -135,7 +134,7 @@ public class FilmQueryApp {
 			ArrayList<Film> userResult = db.findFilmByKeyword(menuChoice);
 
 			UserResults uR = new UserResults();
-			System.out.println("\nMovies matching your entry include...\n");
+			System.out.println("\nMovies whose title and/or description match\n your entry include...\n");
 			System.out.println(uR.filmDetailsDisplay(userResult));
 			launch();
 
