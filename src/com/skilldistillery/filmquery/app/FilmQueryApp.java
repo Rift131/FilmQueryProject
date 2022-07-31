@@ -104,7 +104,7 @@ public class FilmQueryApp {
 			int menuChoice = input.nextInt();
 			input.nextLine();
 
-			Film userResult = db.findFilmById(menuChoice);
+			ArrayList<Film> userResult = db.findFilmById(menuChoice);
 			UserResults uR = new UserResults();
 			System.out.println(uR.filmDetailsDisplay(userResult));
 

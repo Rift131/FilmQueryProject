@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,14 +28,14 @@ class DatabaseAccessTests {
   
   @Test
   void test_getFilmById_returns_film_with_id() throws SQLException {
-    Film f = db.findFilmById(1);
+    ArrayList<Film> f = db.findFilmById(1);
     assertNotNull(f);
 //    assertEquals("ACADEMY DINOSAUR", f.getTitle());
   }
 
   @Test
   void test_getFilmById_with_invalid_id_returns_null() throws SQLException {
-    Film f = db.findFilmById(-42);
+    ArrayList<Film> f = db.findFilmById(-42);
     assertNull(f);
   }
   
