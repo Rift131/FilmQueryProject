@@ -8,23 +8,23 @@
   
 # Technologies Used
 
-Eclipse
-Git
-Java
-JDBC
-Maven
-Relational Database Management System: MySql
-Terminal- ZSH
+* Eclipse
+* Git
+* Java
+* JDBC
+* Maven
+* Relational Database Management System: MySql
+* Terminal- ZSH
 
 # What I learned
  
-##### Predicates & Functions (LIKE):
-Transferring the users dynamic string input for the binding variable was an excellent exercise in syntax and working with bind variables (see PreparedStatement below) and what bind variables represent. 
+#####Predicates & Functions (LIKE):
+* Transferring the users dynamic string input for the binding variable was an excellent exercise in syntax and working with bind variables (see PreparedStatement below) and what bind variables represent. 
 
-##### Object Relational Mapping (ORM): 
+#####Object Relational Mapping (ORM): 
 
-###### Exception Handling
+* Exception Handling
 Exception handling infinite loops occur through "InputMismatchException" unless you reset the scanner with "input.next();".
 
-###### PreparedStatement
+* PreparedStatement
 PreparedStatements, pre-parsed and compiled by the Database Management System (DBMS) was still an enigma to me prior to beginning this project. Due specifically to writing the code for the "findFilmByKeyword" method, I was able to solidify that the "?" in the SELECT statement represented the users input and the two arguments for setting the value represented which question mark you're referring to in numerical order and the alias used for the data to apply respectively. 
