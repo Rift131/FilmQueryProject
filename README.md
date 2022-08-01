@@ -18,10 +18,10 @@
 
 # What I learned
  
-###Predicates & Functions (LIKE):
+#####Predicates & Functions (LIKE):
 * Transferring the users dynamic string input for the binding variable was an excellent exercise in syntax and working with bind variables (see PreparedStatement below) and what bind variables represent. 
 
-###Object Relational Mapping (ORM): 
+#####Object Relational Mapping (ORM): 
 
 * Exception Handling
 Exception handling infinite loops occur through "InputMismatchException" unless you reset the scanner with "input.next();".
